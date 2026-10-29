@@ -1,0 +1,45 @@
+server:
+  port: 8083
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cao_im_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: rootlocal
+  jackson:
+    time-zone: Asia/Shanghai
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+push:
+  # 与 im-server、app-server 的内部令牌保持一致
+  internal-token: caoim-dev-internal-token
+  # log：只记日志。umeng：按设备令牌单播，并带上厂商离线通道参数。webhook：转发到外部地址。
+  delivery: log
+  webhook-url: ""
+  umeng:
+    android-app-key: ""
+    android-master-secret: ""
+    ios-app-key: ""
+    ios-master-secret: ""
+    # iOS 开发推送证书用 false，生产证书用 true
+    production-mode: false
+    channel-activity: com.umeng.message.UmengOfflineMessageActivity
+    main-activity: com.clb.caoim.MainActivity
+    huawei-category: IM
+    vivo-category: IM
+
+logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+  level:
+    root: INFO
+    com.caoim.pushserver: INFO
