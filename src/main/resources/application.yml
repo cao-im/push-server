@@ -20,7 +20,7 @@ mybatis-plus:
 
 push:
   # 与 im-server、app-server 的内部令牌保持一致
-  internal-token: caoim-dev-internal-token
+  internal-token: ${IM_INTERNAL_TOKEN:caoim-dev-internal-token}
   # log：只记日志。umeng：按设备令牌单播，并带上厂商离线通道参数。webhook：转发到外部地址。
   delivery: log
   webhook-url: ""
